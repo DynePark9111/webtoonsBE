@@ -15,7 +15,7 @@ const { requireAuth, checkUser } = require("./middleware/auth.middleware");
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const MONGODB_URI = process.env.MONGODB_URI;
-const ORIGIN = process.env.ORIGIN;
+const ORIGIN = process.env.ORIGIN || "*";
 
 // Middleware
 app.use(express.json());
@@ -56,5 +56,5 @@ app.get("/secret", requireAuth, (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(`Hello World! Hello ${process.env.NAME}~!!!!`);
+  res.send(`Webtoon BE listening on PORT ${PORT}`);
 });
