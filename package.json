@@ -1,0 +1,31 @@
+{
+  "name": "webtoonsbe",
+  "version": "1.0.0",
+  "description": "webtoons nodejs server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -L index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DynePark9111/webtoonsBE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DynePark9111/webtoonsBE/issues"
+  },
+  "homepage": "https://github.com/DynePark9111/webtoonsBE#readme",
+  "dependencies": {
+    "argon2": "^0.28.5",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.10",
+    "node-cache": "^5.1.2",
+    "validator": "^13.7.0"
+  }
+}
