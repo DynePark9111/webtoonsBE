@@ -3,6 +3,6 @@ const router = Router();
 
 const newController = require("../controllers/newWebtoon.controller");
 
-router.get("/:platform", newController.getNewWebtoons);
+router.get("/", newController.getNewWebtoons);
 
 module.exports = router;
