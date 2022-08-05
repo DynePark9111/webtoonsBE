@@ -33,6 +33,42 @@ const getNewWebtoons = async (req, res) => {
   }
 };
 
+const getBookmarked = async (req, res) => {
+  try {
+    const bookmark = res.locals.user.bookmark;
+    const query = { _id: { $in: bookmark } };
+    const webtoons = await NewWebtoon.find(query);
+    res.status(200).json(webtoons);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+const getWatchLater = async (req, res) => {
+  try {
+    const watchLater = res.locals.user.watchLater;
+    const query = { _id: { $in: watchLater } };
+    const webtoons = await NewWebtoon.find(query);
+    res.status(200).json(webtoons);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+const getLiked = async (req, res) => {
+  try {
+    const likedWebtoon = res.locals.user.likedWebtoon;
+    const query = { _id: { $in: likedWebtoon } };
+    const webtoons = await NewWebtoon.find(query);
+    res.status(200).json(webtoons);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getNewWebtoons,
+  getBookmarked,
+  getWatchLater,
+  getLiked,
 };
