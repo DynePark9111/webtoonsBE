@@ -64,16 +64,30 @@ const loginUser = async (req, res) => {
       userId: user._id,
       email: user.email,
       bookmark: user.bookmark,
+      watchLater: user.watchLater,
+      likedWebtoon: user.likedWebtoon,
     });
   } catch (err) {
     const errors = handleErrors(err);
-    res.status(400).json(errors);
+    res.status(403).json(errors);
   }
 };
 
 const logoutUser = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.send("logout");
+};
+
+const checkUser = (req, res) => {
+  try {
+    const { _id, username, email, bookmark, watchLater, likedWebtoon } =
+      res.locals.user;
+    res
+      .status(200)
+      .json({ _id, username, email, bookmark, watchLater, likedWebtoon });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 };
 
 const secureUser = (req, res) => {
@@ -85,4 +99,5 @@ module.exports = {
   loginUser,
   logoutUser,
   secureUser,
+  checkUser,
 };

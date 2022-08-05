@@ -24,6 +24,8 @@ const UserSchema = new Schema({
     maxlength: [16, "maximum 16 characters"],
   },
   bookmark: [String],
+  watchLater: [String],
+  likedWebtoon: [String],
   joinedAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 

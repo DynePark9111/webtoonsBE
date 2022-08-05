@@ -36,21 +36,13 @@ mongoose
 //
 
 // Routes
-app.use(authRoutes);
-app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
 app.use("/new", newWebtoonRoutes);
 // app.use("/new", cache(3000), newWebtoonRoutes);
 app.use("/webtoon", webtoonRoutes);
 app.use("/comment", commentRoutes);
 app.use("/article", articleRoutes);
-app.get("/check", checkUser, (req, res) => {
-  try {
-    const { _id, username, email, bookmark } = res.locals.user;
-    res.status(200).json({ _id, username, email, bookmark });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+app.use("/user", checkUser, userRoutes);
 
 app.get("/secret", requireAuth, (req, res) => {
   res.send("authorized page");
