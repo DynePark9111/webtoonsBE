@@ -1,9 +1,11 @@
+const NewWebtoon = require("../models/newWebtoon.model");
 const Webtoon = require("../models/webtoon.model");
+
+const limit = 24;
 
 const getWebtoons = async (req, res) => {
   const { category, platform, genre } = req.query;
   const page = parseInt(req.query.page);
-  const limit = 20;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const results = {};
@@ -43,8 +45,9 @@ const searchWebtoon = async (req, res) => {
     $or: [{ title: regex }, { author: regex }],
   };
   try {
-    const webtoon = await Webtoon.find(query);
-    res.status(200).json(webtoon);
+    const webtoon = await Webtoon.find(query).limit(limit);
+    // const newWebtoon = await NewWebtoon.find({ title: regex });
+    res.status(200).json({ webtoon });
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
