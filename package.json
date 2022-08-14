@@ -20,6 +20,7 @@
   "homepage": "https://github.com/DynePark9111/webtoonsBE#readme",
   "dependencies": {
     "argon2": "^0.28.5",
+    "axios": "^0.27.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",

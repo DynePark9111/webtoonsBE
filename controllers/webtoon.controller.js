@@ -10,13 +10,11 @@ const getWebtoons = async (req, res) => {
   const endIndex = page * limit;
   const results = {};
   const query = {};
-
   function setMeta() {
     if (endIndex < total) return { nextPage: page + 1, limit, total };
     if (startIndex > 0) return { previousPage: page - 1, limit, total };
     return { limit, total };
   }
-
   query.category = category;
   genre === "전체"
     ? (query.genre = { $exists: true })
