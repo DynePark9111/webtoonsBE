@@ -38,7 +38,6 @@ mongoose
 // Routes
 app.use("/auth", authRoutes);
 app.use("/new", newWebtoonRoutes);
-// app.use("/new", cache(3000), newWebtoonRoutes);
 app.use("/webtoon", webtoonRoutes);
 app.use("/comment", commentRoutes);
 app.use("/article", articleRoutes);
