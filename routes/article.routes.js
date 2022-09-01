@@ -8,6 +8,6 @@ router.get("/", ArticleController.getArticles);
 router.get("/:id", ArticleController.getSingleArticle);
 router.post("/", ArticleController.postArticle);
 router.delete("/:id", requireAuth, ArticleController.deleteArticle);
-router.patch("/like", checkUser, ArticleController.likeArticle);
+router.patch("/like/:id", checkUser, ArticleController.likeArticle);
 
 module.exports = router;
