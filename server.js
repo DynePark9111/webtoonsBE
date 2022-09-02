@@ -15,7 +15,7 @@ const { requireAuth, checkUser } = require("./middleware/auth.middleware");
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const MONGODB_URI = process.env.MONGODB_URI;
-const ORIGIN = process.env.ORIGIN || "*";
+const ORIGIN = [process.env.ORIGIN, "http://localhost:3000"];
 
 // Middleware
 app.use(express.json());
