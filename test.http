@@ -49,3 +49,12 @@ Content-Type: {{content-type}}
 ### WEBTOON get webtoon
 GET {{hostname}}/webtoon HTTP/1.1
 Content-Type: {{content-type}}
+
+
+###
+
+@secret=6LcklHQhAAAAAARgIViAZzVgfpBrSO7-r64wY_r8
+@token=6LcklHQhAAAAAEIgU87L0SkGPOH1ScdAJvUu5GjE
+
+POST https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token} HTTP/1.1
+Content-Type: {{content-type}}

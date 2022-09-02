@@ -15,7 +15,7 @@ const { requireAuth, checkUser } = require("./middleware/auth.middleware");
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const MONGODB_URI = process.env.MONGODB_URI;
-const ORIGIN = process.env.ORIGIN || "*";
+const ORIGIN = [process.env.ORIGIN, "http://localhost:3000"];
 
 // Middleware
 app.use(express.json());
@@ -33,12 +33,10 @@ mongoose
     app.listen(PORT, () => console.log(`server running on port ${PORT}`))
   )
   .catch((error) => console.log(error.message));
-//
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/new", newWebtoonRoutes);
-// app.use("/new", cache(3000), newWebtoonRoutes);
+app.use("/new", cache(3000), newWebtoonRoutes);
 app.use("/webtoon", webtoonRoutes);
 app.use("/comment", commentRoutes);
 app.use("/article", articleRoutes);

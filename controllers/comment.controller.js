@@ -21,9 +21,16 @@ const getNestedComments = async (req, res) => {
 };
 
 const postComment = async (req, res) => {
+  const { comment, postId, authorId, authorName, authorEmail } = req.body;
   try {
-    const comment = await Comment.create(req.body);
-    res.status(201).json(comment);
+    await Comment.create({
+      comment,
+      postId,
+      authorId,
+      authorName,
+      authorEmail,
+    });
+    res.status(201).json();
   } catch (error) {
     if (req.body.comment.length === 0) {
       res.status(411).json({ message: error._message });
